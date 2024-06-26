@@ -14,36 +14,21 @@
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
 
-                <div class="item">
-                    <img src="img/01.webp" alt="Spiderman" />
+                <div class="item" @mouseover="stop">
+                    <img :src="slides[pos].image" alt="Spiderman" />
                     <div class="text">
-                        <h3>Spiderman</h3>
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit
-                            tempore aliquid deleniti aut
-                            veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum
-                            corporis.
-                        </p>
+                        <h3 id="photoTitle"> {{slides[pos].title}} </h3>
+                        <p id="photoPara"> {{slides[pos].text}} </p>
                     </div>
                 </div>
 
-                <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
-                    <div class="thumb active">
-                        <img src="img/01.webp" alt="Svezia" />
-                    </div>
-                    <div class="thumb">
-                        <img src="img/02.webp" alt="Ratchet & Clank" />
-                    </div>
-                    <div class="thumb">
-                        <img src="img/03.webp" alt="Fortnite" />
-                    </div>
-                    <div class="thumb">
-                        <img src="img/04.webp" alt="Stray" />
-                    </div>
-                    <div class="thumb">
-                        <img src="img/05.webp" alt="Avengers" />
+                <div class="thumbs" @mouseover="stop">
+                    <div class="prev" @click="pr"></div>
+                    <div class="next" @click="fw"></div>
+                    
+
+                    <div class="thumb" :class="posIndex === index ? 'active' : ''"  alt="" v-for="(items, index) in slides" @click="cambiaImmagine(index)">
+                        <img :src="items.image" :alt="items.title">
                     </div>
                 </div>
 
